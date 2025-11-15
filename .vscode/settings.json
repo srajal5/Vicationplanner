@@ -1,0 +1,22 @@
+{
+    "css.lint.vendorPrefix": "ignore",
+    "css.validate": false,
+    "files.associations": {
+        "*.css": "css"
+    },
+    "css.customData": [
+        {
+            "version": 1.1,
+            "properties": [
+                {
+                    "name": "-fx-background-color",
+                    "description": "JavaFX background color property"
+                },
+                {
+                    "name": "-fx-font-size",
+                    "description": "JavaFX font size property"
+                }
+            ]
+        }
+    ]
+}

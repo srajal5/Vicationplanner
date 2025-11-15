@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "typeAcquisition": {
+    "enable": false
+  },
+  "exclude": ["node_modules", "dist", "build"]
+}

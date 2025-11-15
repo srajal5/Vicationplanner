@@ -1,0 +1,503 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  * {
+    font-family: 'Inter', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--b1));
+    color: hsl(var(--bc));
+    transition: all 0.5s;
+  }
+
+  /* Modern scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-blue-400 to-purple-400 rounded-full opacity-60 transition-opacity duration-300 hover:opacity-100;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply from-blue-500 to-purple-500;
+  }
+}
+
+@layer components {
+  /* Modern gradient button */
+  .btn-gradient {
+    @apply relative overflow-hidden text-white font-semibold py-3 px-8 rounded-2xl
+           bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600
+           shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40
+           transform transition-all duration-300 ease-out
+           hover:scale-[1.02] active:scale-[0.98]
+           before:absolute before:inset-0 before:bg-gradient-to-r
+           before:from-white/0 before:via-white/20 before:to-white/0
+           before:translate-x-[-100%] hover:before:translate-x-[100%]
+           before:transition-transform before:duration-700;
+  }
+
+  /* Modern card with glassmorphism */
+  .card-modern {
+    @apply relative bg-white/70 backdrop-blur-xl rounded-3xl border border-white/20
+           shadow-xl shadow-gray-900/5 hover:shadow-2xl hover:shadow-gray-900/10
+           transition-all duration-500 ease-out
+           hover:bg-white/80 hover:scale-[1.02]
+           before:absolute before:inset-0 before:rounded-3xl
+           before:bg-gradient-to-br before:from-white/10 before:to-transparent
+           before:pointer-events-none;
+  }
+
+  /* Modern glass card */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/20
+           shadow-2xl shadow-black/5 hover:shadow-2xl hover:shadow-black/10
+           transition-all duration-500 ease-out
+           hover:bg-white/15 hover:scale-[1.02];
+  }
+
+  /* Modern input with floating label effect */
+  .input-modern {
+    @apply relative px-4 py-4 w-full rounded-2xl border-2 backdrop-blur-sm transition-all duration-300 border-gray-200/60 bg-white/50 focus:bg-white focus:border-blue-400 focus:ring-4 focus:ring-blue-100 focus:outline-none hover:border-gray-300 hover:bg-white/70 placeholder:text-gray-400 placeholder:transition-colors focus:placeholder:text-gray-300;
+  }
+
+  /* Modern floating label */
+  .input-modern:focus + .input-label,
+  .input-modern:not(:placeholder-shown) + .input-label {
+    @apply font-semibold text-blue-600 transform scale-75 -translate-y-6;
+  }
+
+  .input-label {
+    @apply absolute left-4 top-1/2 text-gray-500 transition-all duration-300 -translate-y-1/2 pointer-events-none;
+  }
+
+  /* Modern gradient background */
+  .gradient-bg {
+    @apply bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50;
+  }
+
+  /* Modern hero section */
+  .hero-modern {
+    @apply overflow-hidden relative bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 before:absolute before:inset-0 before:bg-black/10 after:absolute after:inset-0 after:bg-gradient-to-t after:from-black/20 after:to-transparent;
+  }
+
+  /* Modern step indicator */
+  .step-modern {
+    @apply flex relative justify-center items-center w-12 h-12 text-lg font-bold text-white bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg transition-all duration-300 shadow-blue-500/30 hover:scale-110 hover:shadow-xl hover:shadow-blue-500/40;
+  }
+
+  .step-modern.active {
+    @apply from-green-500 to-emerald-600 shadow-green-500/30;
+  }
+
+  .step-modern.completed {
+    @apply from-purple-500 to-pink-600 shadow-purple-500/30;
+  }
+
+  /* Modern loading spinner */
+  .loading-modern {
+    @apply rounded-full border-4 border-gray-200 animate-spin border-t-blue-600 border-r-purple-600;
+  }
+
+  /* Modern alert styles */
+  .alert-modern {
+    @apply relative p-6 rounded-2xl border shadow-lg backdrop-blur-xl transition-all duration-300 bg-white/80 border-gray-200/50 shadow-gray-900/5 hover:bg-white/90 hover:shadow-xl;
+  }
+}
+
+@layer utilities {
+  /* Enhanced animations */
+  .animate-fade-in {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-in {
+    animation: slideInScale 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceFloat 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Modern gradients */
+  .bg-mesh {
+    background-image:
+      radial-gradient(at 40% 20%, hsla(28,100%,74%,0.3) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsla(189,100%,56%,0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(355,100%,93%,0.2) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsla(340,100%,76%,0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(22,100%,77%,0.2) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, hsla(242,100%,70%,0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, hsla(343,100%,76%,0.2) 0px, transparent 50%);
+  }
+}
+
+/* Keyframes for modern animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: translateX(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes bounceFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-12px) rotate(-1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  from {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+/* Dark mode enhancements - data-theme attribute selector */
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  @apply bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20;
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] {
+  --b1: 12 8% 8%;
+  --bc: 0 0% 88%;
+}
+
+[data-theme="dark"] .card-modern {
+  @apply bg-gray-800/70 border-gray-700/50 hover:bg-gray-800/80;
+  background-color: rgba(31, 41, 55, 0.7) !important;
+}
+
+[data-theme="dark"] .glass-card {
+  @apply bg-gray-800/30 border-gray-700/30 hover:bg-gray-800/40;
+  background-color: rgba(31, 41, 55, 0.3) !important;
+}
+
+[data-theme="dark"] .input-modern {
+  @apply bg-gray-800/50 border-gray-600/60 focus:bg-gray-800 focus:border-blue-400;
+  background-color: rgba(31, 41, 55, 0.5) !important;
+  border-color: rgba(75, 85, 99, 0.6) !important;
+}
+
+[data-theme="dark"] .btn,
+[data-theme="dark"] button {
+  @apply text-gray-100;
+}
+
+[data-theme="dark"] .dropdown-content {
+  @apply bg-gray-800 border-gray-700;
+  background-color: #1f2937 !important;
+}
+
+[data-theme="dark"] .menu li a,
+[data-theme="dark"] .menu li button {
+  @apply hover:bg-gray-700;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: rgba(31, 41, 55, 0.5) !important;
+  color: #e2e8f0 !important;
+  border-color: rgba(75, 85, 99, 0.6) !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+[data-theme="dark"] .navbar {
+  background-color: #1f2937 !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .hero-modern {
+  @apply bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] a {
+  color: #60a5fa !important;
+}
+
+[data-theme="dark"] a:hover {
+  color: #93c5fd !important;
+}
+
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .bg-gray-50 {
+  background-color: #1f2937 !important;
+}
+
+[data-theme="dark"] .text-gray-900 {
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .text-gray-600 {
+  color: #d1d5db !important;
+}
+
+[data-theme="dark"] .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+[data-theme="dark"] .border-gray-200 {
+  border-color: #374151 !important;
+}
+
+/* Also support .dark class for compatibility */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  @apply bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20;
+}
+
+.dark .card-modern {
+  @apply bg-gray-800/70 border-gray-700/50 hover:bg-gray-800/80;
+}
+
+.dark .glass-card {
+  @apply bg-gray-800/30 border-gray-700/30 hover:bg-gray-800/40;
+}
+
+.dark .input-modern {
+  @apply bg-gray-800/50 border-gray-600/60 focus:bg-gray-800 focus:border-blue-400;
+}
+
+/* Pop-up image animation for hero images */
+.pop-up-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+  animation: popUp 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.pop-up-image:hover {
+  transform: scale(1.04) translateY(-6px);
+}
+
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Ensure pop-up images don't overlap navigation/footer by keeping them in normal flow */
+.hero-pop-wrap {
+  z-index: 0;
+  position: relative;
+}
+
+/* ====== CLERK AUTHENTICATION STYLING ====== */
+/* Light mode - default Clerk styles work fine */
+.cl-baseButton,
+.cl-button,
+.cl-footer-action__list,
+.cl-form_headerSubtitle,
+.cl-internal_button,
+.cl-rootBox {
+  color-scheme: light;
+}
+
+/* Dark mode - fix Clerk modal visibility in dark theme */
+[data-theme="dark"] .cl-rootBox,
+.dark .cl-rootBox {
+  color-scheme: light !important;
+  background: white !important;
+}
+
+[data-theme="dark"] .cl-modal,
+.dark .cl-modal {
+  background-color: white !important;
+}
+
+[data-theme="dark"] .cl-card,
+.dark .cl-card {
+  background-color: white !important;
+  color: #1f2937 !important;
+}
+
+[data-theme="dark"] .cl-formButtonPrimary,
+.dark .cl-formButtonPrimary {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+[data-theme="dark"] .cl-formButtonPrimary:hover,
+.dark .cl-formButtonPrimary:hover {
+  background-color: #1d4ed8 !important;
+}
+
+[data-theme="dark"] .cl-formButtonSecondary,
+.dark .cl-formButtonSecondary {
+  background-color: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+[data-theme="dark"] .cl-formButtonSecondary:hover,
+.dark .cl-formButtonSecondary:hover {
+  background-color: #d1d5db !important;
+}
+
+[data-theme="dark"] .cl-formFieldInput,
+[data-theme="dark"] input.cl-formFieldInput,
+.dark .cl-formFieldInput,
+.dark input.cl-formFieldInput {
+  background-color: #f3f4f6 !important;
+  border-color: #d1d5db !important;
+  color: #1f2937 !important;
+}
+
+[data-theme="dark"] .cl-formFieldInput::placeholder,
+.dark .cl-formFieldInput::placeholder {
+  color: #9ca3af !important;
+}
+
+[data-theme="dark"] .cl-formFieldInput:focus,
+.dark .cl-formFieldInput:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+
+[data-theme="dark"] .cl-headerTitle,
+.dark .cl-headerTitle {
+  color: #1f2937 !important;
+}
+
+[data-theme="dark"] .cl-headerSubtitle,
+.dark .cl-headerSubtitle {
+  color: #6b7280 !important;
+}
+
+[data-theme="dark"] .cl-footerAction__link,
+.dark .cl-footerAction__link {
+  color: #2563eb !important;
+}
+
+[data-theme="dark"] .cl-footerAction__link:hover,
+.dark .cl-footerAction__link:hover {
+  color: #1d4ed8 !important;
+}
+
+[data-theme="dark"] .cl-dividerText,
+.dark .cl-dividerText {
+  color: #6b7280 !important;
+}
+
+[data-theme="dark"] .cl-divider,
+.dark .cl-divider {
+  background-color: #e5e7eb !important;
+}
+
+[data-theme="dark"] .cl-oauthProvider,
+.dark .cl-oauthProvider {
+  background-color: #f9fafb !important;
+  border-color: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+[data-theme="dark"] .cl-oauthProvider:hover,
+.dark .cl-oauthProvider:hover {
+  background-color: #f3f4f6 !important;
+}
+
+/* Ensure Clerk modal is always visible on top */
+[data-theme="dark"] .cl-overlay,
+.dark .cl-overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Label and text styling for dark mode */
+[data-theme="dark"] .cl-formFieldLabel,
+.dark .cl-formFieldLabel {
+  color: #1f2937 !important;
+}
+
+[data-theme="dark"] .cl-internal_button,
+.dark .cl-internal_button {
+  color: #1f2937 !important;
+}
