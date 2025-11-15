@@ -246,5 +246,6 @@ If you want, I can also:
 - Add a small troubleshooting script that checks backend process and port and prints a short status report.
 
 Would you like me to add any of those extras now?
-#   V i c a t i o n p l a n n e r  
+#   V i c a t i o n p l a n n e r 
+ 
  
